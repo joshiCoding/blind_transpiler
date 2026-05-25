@@ -1,0 +1,67 @@
+Universal Fixed Rotation Translator
+===================================
+
+The ``UniversalFixedRotationTranslator`` implements
+blind delegation using fixed ``π/4`` rotation
+equivalents.
+
+Overview
+--------
+
+This translator converts quantum gates into equivalent
+fixed-angle rotation decompositions.
+
+The implementation follows the universal blind
+computation approach proposed by:
+
+* Zhang et al. (2018)
+
+Features
+--------
+
+* fixed-angle decomposition
+* universal gate replacement
+* trap gate insertion
+* non-parametric delegation
+
+Supported Gates
+---------------
+
+Supported gates include:
+
+* ``H``
+* ``S``
+* ``S†``
+* ``T``
+* ``T†``
+* ``CX``
+* ``CZ``
+* ``CCX``
+
+Handling Parametric Gates
+-------------------------
+
+This translator does not directly support arbitrary
+parametric rotations.
+
+Parametric gates are approximated using:
+
+* Qiskit's ``SolovayKitaev`` transpilation pass
+
+Applications
+------------
+
+Suitable for:
+
+* fixed-resource delegation models
+* trap-based blindness
+* non-parametric secure delegation
+* universal fixed-angle computation
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.translators.universalFixedRotationTranslator
+   :members:
+   :show-inheritance:
+   :undoc-members:

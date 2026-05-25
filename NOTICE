@@ -1,0 +1,11 @@
+NOTICE
+
+This project, blind_transpiler, uses Qiskit as a dependency for
+quantum circuit representation, manipulation, and transpilation.
+
+Qiskit is developed by IBM and the Qiskit community contributors.
+
+Qiskit source:
+https://github.com/Qiskit/qiskit
+
+Qiskit is licensed under the Apache License, Version 2.0.

@@ -1,0 +1,126 @@
+blind_transpiler.controllers package
+====================================
+
+The ``controllers`` package defines the protocol-level
+orchestration logic for blind quantum computation (BQC).
+
+Controllers are responsible for converting a transpiled
+quantum circuit into its blind delegated counterpart using
+translation rules defined in the ``translators`` layer.
+
+The layered architecture of BlindTranspiler separates:
+
+* protocol orchestration
+* translation rules
+* intermediate blind instructions
+* framework-specific primitives
+
+This modular separation improves:
+
+* reusability
+* maintainability
+* scalability to new protocols
+* robustness against Qiskit changes
+
+Role of Controllers
+-------------------
+
+Controllers operate on circuits already transpiled into
+compatible basis sets.
+
+Each controller:
+
+* iterates over circuit instructions
+* invokes translation rules
+* generates ``BOP`` objects
+* constructs ``BQCInstruction`` outputs
+* manages protocol-specific ancilla assumptions
+* handles client/server gate separation
+
+The resulting ``BQCInstruction`` object defines the
+complete delegated execution process.
+
+Controller Workflow
+-------------------
+
+Typical workflow:
+
+1. Receive transpiled Qiskit circuit
+2. Iterate over circuit gates
+3. Translate each gate using protocol rules
+4. Generate corresponding ``BOP`` objects
+5. Package operations into ``BQCInstruction``
+
+The output can then be:
+
+* analyzed for communication overhead
+* converted back into executable circuits
+* simulated in delegated settings
+
+Implemented Controllers
+-----------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   controllers/qhe_controller
+   controllers/fdqc_controller
+   controllers/ssdqc_controller
+   controllers/ubqc_controller
+
+Orchestrator
+------------
+
+The ``orchestrator`` acts as the main entry point of
+the library.
+
+Responsibilities include:
+
+* blind transpilation orchestration
+* key-size estimation
+* random key generation
+* basis-set transpilation
+* controller dispatching
+
+Core functions include:
+
+* ``estimate_keysize()``
+* ``generate_random_key()``
+* ``generate_bqc()``
+* ``transpile_circuit()``
+
+blind_transpiler.controllers.orchestrator
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: blind_transpiler.controllers.orchestrator
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Base Controller
+---------------
+
+Base controller abstraction used by all protocol-specific
+controllers.
+
+Defines:
+
+* common protocol interfaces
+* delegation assumptions
+* controller lifecycle methods
+
+blind_transpiler.controllers.base
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: blind_transpiler.controllers.base
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Package Contents
+----------------
+
+.. automodule:: blind_transpiler.controllers
+   :members:
+   :show-inheritance:
+   :undoc-members:

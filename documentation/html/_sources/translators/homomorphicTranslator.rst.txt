@@ -1,0 +1,66 @@
+Homomorphic Translator
+======================
+
+The ``HomomorphicTranslator`` implements translation
+rules for Quantum Homomorphic Encryption (QHE) based
+blind quantum computation.
+
+Overview
+--------
+
+This translator converts standard quantum gates into
+their encrypted delegated equivalents using recursive
+decryption and conditional correction techniques.
+
+The implementation follows approaches from:
+
+* Childs (2005)
+* Broadbent and Jeffery (2015)
+* Fisher et al. (2014)
+* Tan et al. (2017)
+* Joshi et al. (2025)
+
+Supported Gates
+---------------
+
+The translator supports:
+
+* ``H``
+* ``S``
+* ``S†``
+* ``T``
+* ``T†``
+* ``CX``
+* ``CZ``
+* ``CCX``
+* arbitrary ``Rz``
+
+Recursive Decryption
+--------------------
+
+Arbitrary ``Rz`` rotations are implemented using
+recursive decryption techniques.
+
+This enables:
+
+* efficient parametric delegation
+* variational quantum circuits
+* low-depth blind transpilation
+
+Applications
+------------
+
+This translator is suitable for:
+
+* quantum homomorphic encryption
+* variational quantum algorithms
+* parametric circuit delegation
+* delegated secure quantum simulation
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.translators.homomorphicTranslator
+   :members:
+   :show-inheritance:
+   :undoc-members:

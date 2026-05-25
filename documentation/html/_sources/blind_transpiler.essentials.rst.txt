@@ -1,0 +1,168 @@
+blind_transpiler.essentials package
+===================================
+
+The ``essentials`` package defines the core intermediate
+abstractions used throughout BlindTranspiler.
+
+These abstractions provide a protocol-independent representation
+of blind delegated quantum computation and act as the interface
+between the controller and translator layers.
+
+Overview
+--------
+
+BlindTranspiler performs blind transpilation by taking a
+Qiskit quantum circuit as input and generating an object
+of the ``BQCInstruction`` class as output.
+
+The ``BQCInstruction`` object internally stores a list of
+modified gate objects called Blind Operations (``BOP``).
+
+Each ``BOP`` object contains:
+
+* delegated gate definition
+* classical control information
+* communication dependencies
+* delegation metadata
+* client/server execution information
+
+These abstractions allow the library to:
+
+* estimate communication rounds
+* analyze delegation overhead
+* estimate client/server resource requirements
+* simulate delegated execution
+* convert blind instructions back into executable circuits
+
+The ``BQCInstruction`` object can also be converted into
+a Qiskit-compatible circuit representation using the
+``to_circuit()`` method.
+
+Blindness Models Implemented
+----------------------------
+
+The library currently supports multiple approaches for
+blind quantum computation.
+
+Quantum Homomorphic Encryption
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The library implements blind transpilation based on
+Quantum Homomorphic Encryption (QHE) approaches.
+
+Translation rules are implemented for the following gates:
+
+* ``H``
+* ``S``
+* ``S†``
+* ``T``
+* ``T†``
+* ``CX``
+* ``CZ``
+* ``CCX``
+
+The implementation follows approaches described in:
+
+* Childs (2005)
+* Broadbent and Jeffery (2015)
+* Fisher et al. (2014)
+* Tan et al. (2017)
+
+Additionally, the library supports delegation of arbitrary
+``Rz`` rotations using recursive decryption techniques.
+
+This enables efficient handling of:
+
+* parametric quantum circuits
+* variational quantum algorithms
+* low-depth delegated computations
+
+Universal Blind Quantum Computation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The library also implements Universal Blind Quantum
+Computation (UBQC) style approaches.
+
+These approaches operate using universal delegated
+resource sets.
+
+Implemented universal approaches include:
+
+* recursive parametric gate delegation
+* ordered universal gate sets
+* fixed ``π/4`` rotation universal sets
+
+The recursive parametric implementation is especially
+efficient for circuits containing arbitrary rotation gates.
+
+Implemented models include:
+
+* recursive decryption delegation
+* ordered universal gate delegation
+* fixed-angle universal gate delegation
+
+Client Assumptions
+------------------
+
+All current implementations assume that the client can
+directly perform gates from the set:
+
+.. math::
+
+    \{X, Z, Swap, Measure\}
+
+All other gates are delegated to the remote server.
+
+Core Abstractions
+-----------------
+
+BQCInstruction
+^^^^^^^^^^^^^^
+
+The ``BQCInstruction`` class represents the complete
+blind delegated computation.
+
+Responsibilities include:
+
+* storing blind operations
+* tracking delegation dependencies
+* communication scheduling
+* conversion to executable circuits
+* protocol resource estimation
+
+blind_transpiler.essentials.bqc_instruction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: blind_transpiler.essentials.bqc_instruction
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+BOP
+^^^
+
+The ``BOP`` (Blind Operation) class represents an individual
+delegated quantum operation.
+
+Each operation contains:
+
+* delegated gate definition
+* classical dependency information
+* encryption metadata
+* delegation semantics
+
+blind_transpiler.essentials.bop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. automodule:: blind_transpiler.essentials.bop
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Package Contents
+----------------
+
+.. automodule:: blind_transpiler.essentials
+   :members:
+   :show-inheritance:
+   :undoc-members:

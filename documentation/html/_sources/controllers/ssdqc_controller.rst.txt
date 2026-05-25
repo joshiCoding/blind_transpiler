@@ -1,0 +1,55 @@
+SSDQC Controller
+================
+
+The ``SSDQC`` controller implements Single-Server
+Delegated Quantum Computation using fixed-angle
+rotation decomposition.
+
+Translation Backend
+-------------------
+
+Uses:
+
+* ``UniversalFixedRotationTranslator``
+
+The translator converts gates into fixed-angle
+rotation equivalents.
+
+Supported Gates
+---------------
+
+Supports delegated execution of:
+
+* ``H``
+* ``S``
+* ``S†``
+* ``T``
+* ``T†``
+* ``CX``
+* ``CZ``
+* ``CCX``
+
+Handling Parametric Gates
+-------------------------
+
+Parametric gates are approximated using:
+
+* Qiskit's ``SolovayKitaev`` transpilation pass
+
+Applications
+------------
+
+Suitable for:
+
+* trap-based blind delegation
+* fixed-resource computation
+* universal secure delegation
+* non-parametric blind execution
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.controllers.ssdqc
+   :members:
+   :show-inheritance:
+   :undoc-members:

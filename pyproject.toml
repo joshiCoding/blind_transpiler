@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=69.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blind_transpiler"
+version = "0.0.1"
+
+
+description = "A Qiskit-based library for transpiling quantum circuits into blind counterparts for applications in quantum homomorphic encryption and universal blind quantum computation."
+
+readme = "README.md"
+
+requires-python = ">=3.8"
+
+license = { text = "Apache-2.0" }
+
+authors = [
+    { name = "Mohit Joshi", email = "joshimohit@bhu.ac.in" }
+]
+
+keywords = [
+    "quantum-computing",
+    "qiskit",
+    "quantum-cryptography",
+    "quantum-homomorphic-encryption",
+    "blind-quantum-computation",
+    "transpiler",
+    "quantum-circuits"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Security :: Cryptography",
+
+    "License :: OSI Approved :: Apache Software License",
+
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    'qiskit',
+]
+
+[project.urls]
+Homepage = "https://github.com/joshicoding/blind_transpiler"
+Repository = "https://github.com/joshicoding/blind_transpiler"
+Documentation = "https://github.com/joshicoding/blind_transpiler#readme"
+Issues = "https://github.com/joshicoding/blind_transpiler/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["blind_transpiler*"]
+
+[tool.setuptools.package-data]
+blind_transpiler = ["*.txt", "*.json", "*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.run]
+source = ["blind_transpiler"]

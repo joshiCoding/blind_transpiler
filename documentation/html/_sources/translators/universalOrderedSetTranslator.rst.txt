@@ -1,0 +1,69 @@
+Universal Ordered Set Translator
+================================
+
+The ``UniversalOrderedSetTranslator`` implements
+blind transpilation using ordered universal
+resource sets.
+
+Overview
+--------
+
+This translator performs blind delegation using
+ordered universal gate decompositions.
+
+The implementation follows:
+
+* Liu et al. (2020)
+
+Features
+--------
+
+* ordered-set decomposition
+* universal blind delegation
+* full-blind computation
+* homomorphic-style decryption reuse
+
+Supported Gates
+---------------
+
+Supported gates include:
+
+* ``H``
+* ``S``
+* ``CX``
+* ``CZ``
+* ``CCX``
+
+Relationship to Homomorphic Translation
+---------------------------------------
+
+This translator reuses several decryption principles
+from the ``HomomorphicTranslator``.
+
+The primary difference is the use of a universal
+ordered resource set.
+
+Handling Parametric Gates
+-------------------------
+
+Arbitrary rotations are approximated using:
+
+* Qiskit's ``SolovayKitaev`` transpilation pass
+
+Applications
+------------
+
+Suitable for:
+
+* universal blind quantum computation
+* ordered resource delegation
+* non-parametric blind computation
+* full-blind delegation
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.translators.universalOrderedSetTranslator
+   :members:
+   :show-inheritance:
+   :undoc-members:

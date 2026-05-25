@@ -1,0 +1,39 @@
+QHE Controller
+==============
+
+The ``QHE`` controller implements blind quantum
+computation using Quantum Homomorphic Encryption (QHE)
+based delegation techniques.
+
+Translation Backend
+-------------------
+
+Uses:
+
+* ``HomomorphicTranslator``
+
+The translator converts gates into encrypted delegated
+operations represented as ``BOP`` objects.
+
+Supported Gates
+---------------
+
+The controller supports delegated execution of:
+
+* ``H``
+* ``S``
+* ``S†``
+* ``T``
+* ``T†``
+* ``CX``
+* ``CZ``
+* ``CCX``
+* arbitrary ``Rz``
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.controllers.qhe
+   :members:
+   :show-inheritance:
+   :undoc-members:

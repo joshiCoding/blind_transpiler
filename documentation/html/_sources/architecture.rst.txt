@@ -1,0 +1,163 @@
+Architecture
+============
+
+BlindTranspiler follows a modular layered architecture for
+rapid prototyping of blind quantum computation (BQC) protocols.
+
+The framework separates orchestration logic, protocol-specific
+translation rules, and low-level instruction abstractions,
+allowing independent development and experimentation of
+different blind quantum computation models.
+
+
+Design Philosophy
+-----------------
+
+BlindTranspiler is designed as a research-oriented framework
+for experimentation in delegated secure quantum computation.
+
+BlindTranspiler follows a layered modular architecture.
+
+.. code-block:: text
+
+    Layer 0 : Qiskit Primitives
+        ↓
+    Layer 1 : Core I/O Modules
+        ↓
+    Layer 2 : Controllers
+        ↓
+    Layer 3 : Translators
+
+
+The architecture separates:
+
+* framework primitives
+* orchestration logic
+* translation rules
+* delegated instruction representation
+
+This provides:
+
+* modularity
+* maintainability
+* protocol scalability
+* framework independence
+
+
+High-Level Design
+-----------------
+
+The library is divided into three primary layers:
+
+* ``controllers`` — protocol orchestration and workflow management
+* ``translators`` — circuit-to-blind transformation rules
+* ``essentials`` — intermediate instruction abstractions
+
+The modular design allows researchers to:
+
+* rapidly prototype new BQC protocols
+* benchmark blindness overheads
+* compare resource requirements
+* integrate custom translation strategies
+* experiment with hybrid delegation models
+
+Package Structure
+-----------------
+
+.. code-block:: text
+
+    blind_transpiler/
+    │
+    ├── essentials/
+    │   ├── bop.py
+    │   └── bqc_instruction.py
+    │
+    ├── controllers/
+    │   ├── orchestrator.py
+    │   ├── qhe.py
+    │   ├── ubqc.py
+    │   ├── fdqc.py
+    │   └── ssdqc.py
+    │
+    └── translators/
+        ├── homomorphicTranslator.py
+        ├── universalRecursiveRotationTranslator.py
+        ├── universalOrderedSetTranslator.py
+        └── universalFixedRotationTranslator.py
+
+Controllers
+-----------
+
+The ``controllers`` layer coordinates protocol execution and
+delegated computation workflows.
+
+Responsibilities include:
+
+* orchestration of transpilation pipelines
+* protocol selection and execution
+* blindness resource estimation
+* basis-set preparation
+* compute-space management
+
+Supported protocol controllers include:
+
+* ``QHE`` — quantum homomorphic encryption
+* ``UBQC`` — universal blind quantum computation
+* ``FDQC`` — full delegated quantum computation
+* ``SSDQC`` — single-server delegated quantum computation
+
+Translators
+-----------
+
+The ``translators`` layer defines the transformation rules
+used to convert standard quantum circuits into blind forms.
+
+Different translators implement different blindness assumptions
+and gate decomposition strategies.
+
+Responsibilities include:
+
+* gate rewriting
+* encrypted gate synthesis
+* basis transformation
+* blind instruction generation
+* recursive rotation decomposition
+
+The translator layer is intentionally modular to support
+future protocol extensions.
+
+Implemented Translation Libraries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* ``HomomorphicTranslator``
+* ``UniversalOrderedSetTranslator``
+* ``UniversalFixedRotationTranslator``
+* ``UniversalRecursiveRotationTranslator``
+
+
+Essentials
+----------
+
+The ``essentials`` layer provides core abstractions used
+throughout the framework.
+
+Key components include:
+
+* ``BQCInstruction`` — intermediate blind instruction format
+* ``BOP`` — blind operation primitives
+
+These abstractions decouple protocol logic from low-level
+circuit manipulation.
+
+Typical Workflow
+----------------
+
+A standard workflow in BlindTranspiler follows:
+
+1. User creates a Qiskit circuit.
+2. A controller selects the target protocol.
+3. The circuit is transpiled into an appropriate basis set.
+4. A translator converts the circuit into blind instructions.
+5. The resulting blind representation is returned for delegation.
+
+

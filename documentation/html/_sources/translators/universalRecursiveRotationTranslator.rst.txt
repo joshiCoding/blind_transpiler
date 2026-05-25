@@ -1,0 +1,71 @@
+Universal Recursive Rotation Translator
+=======================================
+
+The ``UniversalRecursiveRotationTranslator``
+implements universal blind quantum computation
+using recursive decryption of arbitrary rotations.
+
+Overview
+--------
+
+This translator enables efficient delegation of
+parametric quantum circuits using recursive
+rotation decryption techniques.
+
+The implementation follows:
+
+* Joshi et al. (2025)
+
+Features
+--------
+
+* arbitrary-angle delegation
+* recursive decryption
+* universal resource-set construction
+* optimized parametric delegation
+
+Supported Gates
+---------------
+
+Supported gates include:
+
+* ``H``
+* ``Rz``
+* ``CZ``
+
+Universal Resource Set
+----------------------
+
+The translator uses a universal resource set
+constructed from recursive rotation primitives.
+
+This enables:
+
+* efficient parametric computation
+* low-depth delegation
+* practical variational circuit execution
+
+Optimizations
+-------------
+
+The implementation contains practical optimizations
+for recursive decryption workflows to reduce
+delegation overhead.
+
+Applications
+------------
+
+Suitable for:
+
+* variational quantum algorithms
+* parametric blind computation
+* low-depth delegated circuits
+* universal blind delegation
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.translators.universalRecursiveRotationTranslator
+   :members:
+   :show-inheritance:
+   :undoc-members:

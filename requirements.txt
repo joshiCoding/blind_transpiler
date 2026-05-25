@@ -1,0 +1,4 @@
+qiskit-aer
+matplotlib
+pytest
+tqdm

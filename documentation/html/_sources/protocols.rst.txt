@@ -1,0 +1,153 @@
+Protocols
+=========
+
+
+BlindTranspiler currently supports four delegated
+blindness models.
+
+
+
+
+BlindTranspiler currently supports multiple delegated
+blindness models.
+
++----------+--------------+-------------+-------------------+------------------------+
+| Protocol | Parametric   | Universal   | Data Blindness    | Compuation Blindness   |
++==========+==============+=============+===================+========================+
+| QHE      | Yes          | Yes         | Yes               |  No                    |
++----------+--------------+-------------+-------------------+------------------------+
+| UBQC     | Yes          | Yes         | Yes               |  Yes                   |
++----------+--------------+-------------+-------------------+------------------------+
+| FDQC     | No           | Yes         | Yes               |  Yes                   |
++----------+--------------+-------------+-------------------+------------------------+
+| SSDQC    | No           | Yes         | Yes               |  Yes                   |
++----------+--------------+-------------+-------------------+------------------------+
+
+
+QHE
+---
+
+
+The ``QHE`` controller implements blind quantum
+computation using Quantum Homomorphic Encryption (QHE)
+based delegation techniques.
+
+This controller converts quantum circuits into
+half-blind delegated equivalents using homomorphic
+translation rules.
+
+The implementation follows:
+
+* Childs (2005)
+* Broadbent and Jeffery (2015)
+* Fisher et al. (2014)
+* Tan et al. (2017)
+* Joshi et al. (2025)
+
+Features:
+
+* half-blind delegated computation
+* arbitrary ``Rz`` support
+* recursive decryption
+* parametric gate delegation
+* variational circuit compatibility
+
+Suitable for:
+
+* quantum homomorphic encryption
+* variational quantum algorithms
+* delegated parametric computation
+* secure cloud quantum execution
+
+See the detailed :doc:`controllers/qhe_controller` documentation:
+
+
+UBQC
+----
+
+
+The ``UBQC`` controller implements Universal Blind
+Quantum Computation using recursive decryption of
+arbitrary rotations.
+
+
+This controller enables efficient delegation of
+parametric quantum circuits using universal
+resource-set construction.
+
+The implementation follows:
+
+* Joshi et al. (2025)
+
+Features:
+
+* arbitrary-angle delegation
+* recursive decryption
+* low-depth blind transpilation
+* optimized parametric delegation
+* universal resource-set computation
+
+See the detailed :doc:`controllers/ubqc_controller` documentation:
+
+
+FDQC
+----
+
+
+The ``FDQC`` controller implements Full Delegated
+Quantum Computation using ordered universal
+resource sets.
+
+
+This controller performs full-blind delegation using
+ordered-set universal gate decomposition.
+
+The implementation follows:
+
+* Liu et al. (2020)
+
+Features:
+
+* universal blind computation
+* ordered universal resource sets
+* non-parametric delegation
+* full-blind workflow
+* reusable decryption primitives
+
+
+See the detailed :doc:`controllers/fdqc_controller` documentation:
+
+
+SSDQC
+------
+
+
+The ``SSDQC`` controller implements Single-Server
+Delegated Quantum Computation using fixed-angle
+rotation decomposition.
+
+
+This controller performs blind delegation using
+``π/4`` rotation equivalents and trap-based
+universal delegation.
+
+The implementation follows:
+
+* Zhang et al. (2018)
+
+Features:
+
+* fixed-angle decomposition
+* trap-based delegation
+* universal gate replacement
+* non-parametric blind computation
+
+
+See the detailed :doc:`controllers/ssdqc_controller` documentation:
+
+
+
+
+
+
+

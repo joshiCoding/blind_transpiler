@@ -1,0 +1,50 @@
+UBQC Controller
+================
+
+The ``UBQC`` controller implements Universal Blind
+Quantum Computation using recursive decryption of
+arbitrary rotations.
+
+Translation Backend
+-------------------
+
+Uses:
+
+* ``UniversalRecursiveRotationTranslator``
+
+The translator performs recursive decryption of
+arbitrary ``Rz`` rotations.
+
+Supported Gates
+---------------
+
+Supports delegated execution of:
+
+* ``H``
+* ``Rz``
+* ``CZ``
+
+Applications
+------------
+
+Suitable for:
+
+* variational quantum algorithms
+* parametric delegated computation
+* universal blind quantum computation
+* low-depth blind transpilation
+
+Optimizations
+-------------
+
+The implementation includes practical optimizations
+for recursive decryption workflows to reduce
+delegation overhead.
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.controllers.ubqc
+   :members:
+   :show-inheritance:
+   :undoc-members:

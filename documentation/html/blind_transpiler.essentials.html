@@ -1,0 +1,608 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="blind_transpiler.controllers package" href="blind_transpiler.controllers.html"><link rel="prev" title="blind_transpiler package" href="blind_transpiler.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>blind_transpiler.essentials package - blind_transpiler 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">blind_transpiler 0.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">blind_transpiler 0.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocols.html">Protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="blind_transpiler.html">blind_transpiler package</a><input aria-label="Toggle navigation of blind_transpiler package" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">blind_transpiler.essentials package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="blind_transpiler.controllers.html">blind_transpiler.controllers package</a><input aria-label="Toggle navigation of blind_transpiler.controllers package" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="controllers/qhe_controller.html">QHE Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers/fdqc_controller.html">FDQC Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers/ssdqc_controller.html">SSDQC Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers/ubqc_controller.html">UBQC Controller</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="blind_transpiler.translators.html">blind_transpiler.translators package</a><input aria-label="Toggle navigation of blind_transpiler.translators package" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="translators/homomorphicTranslator.html">Homomorphic Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translators/universalFixedRotationTranslator.html">Universal Fixed Rotation Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translators/universalOrderedSetTranslator.html">Universal Ordered Set Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translators/universalRecursiveRotationTranslator.html">Universal Recursive Rotation Translator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/blind_transpiler.essentials.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="blind-transpiler-essentials-package">
+<h1>blind_transpiler.essentials package<a class="headerlink" href="#blind-transpiler-essentials-package" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">essentials</span></code> package defines the core intermediate
+abstractions used throughout BlindTranspiler.</p>
+<p>These abstractions provide a protocol-independent representation
+of blind delegated quantum computation and act as the interface
+between the controller and translator layers.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>BlindTranspiler performs blind transpilation by taking a
+Qiskit quantum circuit as input and generating an object
+of the <code class="docutils literal notranslate"><span class="pre">BQCInstruction</span></code> class as output.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BQCInstruction</span></code> object internally stores a list of
+modified gate objects called Blind Operations (<code class="docutils literal notranslate"><span class="pre">BOP</span></code>).</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">BOP</span></code> object contains:</p>
+<ul class="simple">
+<li><p>delegated gate definition</p></li>
+<li><p>classical control information</p></li>
+<li><p>communication dependencies</p></li>
+<li><p>delegation metadata</p></li>
+<li><p>client/server execution information</p></li>
+</ul>
+<p>These abstractions allow the library to:</p>
+<ul class="simple">
+<li><p>estimate communication rounds</p></li>
+<li><p>analyze delegation overhead</p></li>
+<li><p>estimate client/server resource requirements</p></li>
+<li><p>simulate delegated execution</p></li>
+<li><p>convert blind instructions back into executable circuits</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">BQCInstruction</span></code> object can also be converted into
+a Qiskit-compatible circuit representation using the
+<code class="docutils literal notranslate"><span class="pre">to_circuit()</span></code> method.</p>
+</section>
+<section id="blindness-models-implemented">
+<h2>Blindness Models Implemented<a class="headerlink" href="#blindness-models-implemented" title="Link to this heading">¶</a></h2>
+<p>The library currently supports multiple approaches for
+blind quantum computation.</p>
+<section id="quantum-homomorphic-encryption">
+<h3>Quantum Homomorphic Encryption<a class="headerlink" href="#quantum-homomorphic-encryption" title="Link to this heading">¶</a></h3>
+<p>The library implements blind transpilation based on
+Quantum Homomorphic Encryption (QHE) approaches.</p>
+<p>Translation rules are implemented for the following gates:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S†</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T†</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CX</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CZ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CCX</span></code></p></li>
+</ul>
+<p>The implementation follows approaches described in:</p>
+<ul class="simple">
+<li><p>Childs (2005)</p></li>
+<li><p>Broadbent and Jeffery (2015)</p></li>
+<li><p>Fisher et al. (2014)</p></li>
+<li><p>Tan et al. (2017)</p></li>
+</ul>
+<p>Additionally, the library supports delegation of arbitrary
+<code class="docutils literal notranslate"><span class="pre">Rz</span></code> rotations using recursive decryption techniques.</p>
+<p>This enables efficient handling of:</p>
+<ul class="simple">
+<li><p>parametric quantum circuits</p></li>
+<li><p>variational quantum algorithms</p></li>
+<li><p>low-depth delegated computations</p></li>
+</ul>
+</section>
+<section id="universal-blind-quantum-computation">
+<h3>Universal Blind Quantum Computation<a class="headerlink" href="#universal-blind-quantum-computation" title="Link to this heading">¶</a></h3>
+<p>The library also implements Universal Blind Quantum
+Computation (UBQC) style approaches.</p>
+<p>These approaches operate using universal delegated
+resource sets.</p>
+<p>Implemented universal approaches include:</p>
+<ul class="simple">
+<li><p>recursive parametric gate delegation</p></li>
+<li><p>ordered universal gate sets</p></li>
+<li><p>fixed <code class="docutils literal notranslate"><span class="pre">π/4</span></code> rotation universal sets</p></li>
+</ul>
+<p>The recursive parametric implementation is especially
+efficient for circuits containing arbitrary rotation gates.</p>
+<p>Implemented models include:</p>
+<ul class="simple">
+<li><p>recursive decryption delegation</p></li>
+<li><p>ordered universal gate delegation</p></li>
+<li><p>fixed-angle universal gate delegation</p></li>
+</ul>
+</section>
+</section>
+<section id="client-assumptions">
+<h2>Client Assumptions<a class="headerlink" href="#client-assumptions" title="Link to this heading">¶</a></h2>
+<p>All current implementations assume that the client can
+directly perform gates from the set:</p>
+<div class="math-wrapper docutils container">
+<div class="math notranslate nohighlight">
+\[\{X, Z, Swap, Measure\}\]</div>
+</div>
+<p>All other gates are delegated to the remote server.</p>
+</section>
+<section id="core-abstractions">
+<h2>Core Abstractions<a class="headerlink" href="#core-abstractions" title="Link to this heading">¶</a></h2>
+<section id="bqcinstruction">
+<h3>BQCInstruction<a class="headerlink" href="#bqcinstruction" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">BQCInstruction</span></code> class represents the complete
+blind delegated computation.</p>
+<p>Responsibilities include:</p>
+<ul class="simple">
+<li><p>storing blind operations</p></li>
+<li><p>tracking delegation dependencies</p></li>
+<li><p>communication scheduling</p></li>
+<li><p>conversion to executable circuits</p></li>
+<li><p>protocol resource estimation</p></li>
+</ul>
+<section id="module-blind_transpiler.essentials.bqc_instruction">
+<span id="blind-transpiler-essentials-bqc-instruction"></span><h4>blind_transpiler.essentials.bqc_instruction<a class="headerlink" href="#module-blind_transpiler.essentials.bqc_instruction" title="Link to this heading">¶</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bqc_instruction.BQCInstruction">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">blind_transpiler.essentials.bqc_instruction.</span></span><span class="sig-name descname"><span class="pre">BQCInstruction</span></span><a class="reference internal" href="_modules/blind_transpiler/essentials/bqc_instruction.html#BQCInstruction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bqc_instruction.BQCInstruction.add_elements">
+<span class="sig-name descname"><span class="pre">add_elements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bqc_instruction.html#BQCInstruction.add_elements"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.add_elements" title="Link to this definition">¶</a></dt>
+<dd><p>It is used to add new BOP element to the variable instruction_list.
+This fuction can handle elem as object BOP or the list of BOP class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>BOP/ List</em><em>[</em><a class="reference internal" href="#blind_transpiler.essentials.bop.BOP" title="blind_transpiler.essentials.bop.BOP"><em>BOP</em></a><em>]</em>) – elem to be added to list, can be object of class BOP or list of object of class BOP.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bqc_instruction.BQCInstruction.get_meta_data">
+<span class="sig-name descname"><span class="pre">get_meta_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bqc_instruction.html#BQCInstruction.get_meta_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.get_meta_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bqc_instruction.BQCInstruction.print_meta_data">
+<span class="sig-name descname"><span class="pre">print_meta_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bqc_instruction.html#BQCInstruction.print_meta_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.print_meta_data" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bqc_instruction.BQCInstruction.to_circuit">
+<span class="sig-name descname"><span class="pre">to_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">const_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'complete'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_barrier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bqc_instruction.html#BQCInstruction.to_circuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.to_circuit" title="Link to this definition">¶</a></dt>
+<dd><p>Create the quantum circuit using list of BOP class objects based on the conditional provided to them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bqc_instruction</strong> (<em>list</em><em>[</em><a class="reference internal" href="#blind_transpiler.essentials.bop.BOP" title="blind_transpiler.essentials.bop.BOP"><em>BOP</em></a><em>]</em>) – the list of BOP object that contain the gate object needed to be applied at each step to form the bqc circuit with given key, based on conditional value.</p></li>
+<li><p><strong>const_type</strong> (<em>str</em>) – <dl class="simple">
+<dt>circuit can be constructed of four different types:</dt><dd><p>’complete’: all the client and server gates are present, circuit is complete functional blind circuit.
+‘client_only’: contains only gates corresponding to the client. It is not functional blind circuit, and should only be used for resource estimation of client side and other similar tasks.
+‘server_only’: contains only gates corresponding to the server. It is not functional blind circuit, and should only be used for resource estimation of server side and other similar tasks.
+‘encrypt_only’: contain no decryption gate for the operations performed. Not a functional blind circuit, can be used to verify the blindness of data at server end. At the end of presentation.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>show_barrier</strong> (<em>boolean</em>) – flag that controlls if the circuit will contain barrier or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>qc (QuantumCircuit)</dt><dd><p>a quantum circuit that performs same operation as original circuit, with exception of global phase shift, but is completly blind.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong><strong>(</strong><strong>f'const_type {const_type} not available. Kindly choose from &quot;complete&quot;</strong><strong>, </strong><strong>&quot;client_only&quot;</strong><strong>, </strong><strong>&quot;server_only&quot;</strong><strong>, </strong><strong>&quot;encrypt_only&quot;.'</strong><strong>)</strong> – </p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Library Dependency:</dt><dd><dl class="simple">
+<dt>qiskit:</dt><dd><p>QuantumCircuit</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="bop">
+<h3>BOP<a class="headerlink" href="#bop" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">BOP</span></code> (Blind Operation) class represents an individual
+delegated quantum operation.</p>
+<p>Each operation contains:</p>
+<ul class="simple">
+<li><p>delegated gate definition</p></li>
+<li><p>classical dependency information</p></li>
+<li><p>encryption metadata</p></li>
+<li><p>delegation semantics</p></li>
+</ul>
+<section id="module-blind_transpiler.essentials.bop">
+<span id="blind-transpiler-essentials-bop"></span><h4>blind_transpiler.essentials.bop<a class="headerlink" href="#module-blind_transpiler.essentials.bop" title="Link to this heading">¶</a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bop.BOP">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">blind_transpiler.essentials.bop.</span></span><span class="sig-name descname"><span class="pre">BOP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Instruction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditional</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bop.html#BOP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bop.BOP" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="blind_transpiler.essentials.bop.BOP.conditional_and">
+<span class="sig-name descname"><span class="pre">conditional_and</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/blind_transpiler/essentials/bop.html#BOP.conditional_and"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#blind_transpiler.essentials.bop.BOP.conditional_and" title="Link to this definition">¶</a></dt>
+<dd><p>Modifies the conditional of the self class object with Binary ANDing it with incoming x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>{0</em><em>,</em><em>1}</em>) – binary conditional, can be 0 or 1.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>BOP</dt><dd><p>x &amp; conditional of the current object of class, use to apply gate like condtional cx,cz gate in ccx decryption and other similar situations.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Library Dependency:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+<section id="module-blind_transpiler.essentials">
+<span id="package-contents"></span><h2>Package Contents<a class="headerlink" href="#module-blind_transpiler.essentials" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="blind_transpiler.controllers.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">blind_transpiler.controllers package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="blind_transpiler.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">blind_transpiler package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Mohit Joshi
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">blind_transpiler.essentials package</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#blindness-models-implemented">Blindness Models Implemented</a><ul>
+<li><a class="reference internal" href="#quantum-homomorphic-encryption">Quantum Homomorphic Encryption</a></li>
+<li><a class="reference internal" href="#universal-blind-quantum-computation">Universal Blind Quantum Computation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#client-assumptions">Client Assumptions</a></li>
+<li><a class="reference internal" href="#core-abstractions">Core Abstractions</a><ul>
+<li><a class="reference internal" href="#bqcinstruction">BQCInstruction</a><ul>
+<li><a class="reference internal" href="#module-blind_transpiler.essentials.bqc_instruction">blind_transpiler.essentials.bqc_instruction</a><ul>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction"><code class="docutils literal notranslate"><span class="pre">BQCInstruction</span></code></a><ul>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.add_elements"><code class="docutils literal notranslate"><span class="pre">BQCInstruction.add_elements()</span></code></a></li>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.get_meta_data"><code class="docutils literal notranslate"><span class="pre">BQCInstruction.get_meta_data()</span></code></a></li>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.print_meta_data"><code class="docutils literal notranslate"><span class="pre">BQCInstruction.print_meta_data()</span></code></a></li>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bqc_instruction.BQCInstruction.to_circuit"><code class="docutils literal notranslate"><span class="pre">BQCInstruction.to_circuit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bop">BOP</a><ul>
+<li><a class="reference internal" href="#module-blind_transpiler.essentials.bop">blind_transpiler.essentials.bop</a><ul>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bop.BOP"><code class="docutils literal notranslate"><span class="pre">BOP</span></code></a><ul>
+<li><a class="reference internal" href="#blind_transpiler.essentials.bop.BOP.conditional_and"><code class="docutils literal notranslate"><span class="pre">BOP.conditional_and()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-blind_transpiler.essentials">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    </body>
+</html>

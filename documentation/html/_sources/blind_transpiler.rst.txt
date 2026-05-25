@@ -1,0 +1,110 @@
+blind_transpiler package
+========================
+
+BlindTranspiler is a modular framework for blind quantum
+computation (BQC) protocol transpilation built on top of Qiskit.
+
+The library is organized into three major layers:
+
+* ``controllers`` — orchestration and protocol execution
+* ``translators`` — blind circuit transformation rules
+* ``essentials`` — low-level blind instruction abstractions
+
+Package Architecture
+--------------------
+
+.. code-block:: text
+
+    blind_transpiler/
+    │
+    ├── essentials/
+    │   ├── bop.py
+    │   └── bqc_instruction.py
+    │
+    ├── controllers/
+    │   ├── orchestrator.py
+    │   ├── qhe.py
+    │   ├── ubqc.py
+    │   ├── fdqc.py
+    │   └── ssdqc.py
+    │
+    └── translators/
+        ├── homomorphicTranslator.py
+        ├── universalRecursiveRotationTranslator.py
+        ├── universalOrderedSetTranslator.py
+        └── universalFixedRotationTranslator.py
+
+Core Components
+----------------
+
+Essentials
+^^^^^^^^^^
+
+The ``essentials`` package defines the intermediate abstractions
+used throughout the framework.
+
+Key classes include:
+
+* ``BQCInstruction`` — blind instruction representation
+* ``BOP`` — blind operation primitives
+
+.. toctree::
+   :maxdepth: 2
+
+   blind_transpiler.essentials
+
+
+Controllers
+^^^^^^^^^^^
+
+The ``controllers`` package contains high-level orchestration
+logic for delegated quantum computation protocols.
+
+Implemented protocols include:
+
+* ``QHE`` — quantum homomorphic encryption
+* ``UBQC`` — universal blind quantum computation
+* ``FDQC`` — full delegated quantum computation
+* ``SSDQC`` — single-server delegated quantum computation
+
+.. toctree::
+   :maxdepth: 2
+
+   blind_transpiler.controllers
+
+
+Translators
+^^^^^^^^^^^
+
+The ``translators`` package implements transformation rules
+for converting standard quantum circuits into blind forms.
+
+Different translators correspond to different blindness models
+and gate decomposition strategies.
+
+.. toctree::
+   :maxdepth: 2
+
+   blind_transpiler.translators
+
+Global Utilities
+----------------
+
+blind_transpiler.global_value_store
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Global configuration and shared utility state used across
+protocol controllers and translators.
+
+.. automodule:: blind_transpiler.global_value_store
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Top-Level Package
+-----------------
+
+.. automodule:: blind_transpiler
+   :members:
+   :show-inheritance:
+   :undoc-members:

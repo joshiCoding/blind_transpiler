@@ -1,0 +1,181 @@
+Quick Start
+===========
+
+
+blind_transpiler is an open source qiskit-based library for rapid prototyping of quantum homomorphic encryption and universal blind quantum computation in circuit-based model.
+
+
+Install:
+
+The blind_transpiler library can be installed using pypi as:
+
+.. code-block:: bash
+
+    pip install blind-transpiler
+
+
+
+Create your first blind circuit:
+
+Let's take a simple circuit of GHZ state:
+
+.. code-block:: python
+
+    from qiskit import QuantumCircuit
+
+    qc = QuantumCircuit(3)
+
+    qc.h(0)
+
+    qc.cx(0,1)
+
+    qc.cx(1,2)
+
+    qc.measure_all()
+
+The circuit will be given as:
+
+.. image:: _static/original_circuit_1.png
+   :align: center
+   :width: 40%
+
+
+Let us also define a simulator for the circuit:
+
+.. code-block:: python
+
+    def run_circuit(circ):
+
+        backend = AerSimulator()
+
+        shots = 1000
+
+        t_circ = transpile(circ, backend)
+
+        results = backend.run(t_circ, shots=shots).result()
+
+        return results
+
+If we run the circuit of GHZ state defined above on the qiskit simulator, we will see the output as:
+
+
+.. image:: _static/original_output_1.png
+   :align: center
+   :width: 40%
+
+
+This circuit can be converted to its equivalent blind circuit using `blind_transpiler` library as:
+
+.. code-block:: python
+
+    from blind_transpiler import BQC
+
+    bqc = BQC()
+
+    bqc_instructions = bqc.generate_bqc(circ=qc, format='qhe')
+
+
+This `bqc_instruction` objects contains the sequence of gate and the instruction to delegate then in the client-server architecture. We can try four different format, namely, *qhe*, *ubqc*, *fdqc*, *ssdqc*. 
+
+For more control on the encryption process, we can explicitly estimated the size of encryption key and generate it using any random process, or library defined process as:
+
+.. code-block:: python
+
+    from blind_transpiler import BQC
+
+    bqc = BQC()
+
+    key_size = bqc.estimate_keysize(format='qhe', circ=qc)
+
+    keys =  bqc.generate_random_key(key_size=key_size, key_style='rand')
+
+    bqc_instructions  = bqc.generate_bqc(circ=circ, format ='qhe', keys=keys)
+
+
+The object `bqc_instructions` can be probed to get the various parameters associated with delegation as:
+
+.. code-block:: python
+
+    print(bqc_instrucion.n_client_gates)
+
+    print(bqc_instrucion.n_server_gates)
+
+    print(bqc_instrucion.n_secure_gates)
+
+    print(bqc_instrucion.n_communication_rounds)
+
+
+The object `bqc_instructions` is virtually a collection of modified gate object which can be further probes for additional information as:
+
+.. code-block:: python
+
+    for elem in bqc_instructions:
+    
+        print(elem.op_type)
+    
+        print(elem.conditional)
+    
+        print(elem.gate)
+
+Here, `op_type` defines the type of operation that the given instruction perform. For instance, it can be a client operated gate, or server delegated gate, or it might be gate necessary for encryption or decryption. `conditional` give the value of boolean variable which can be $0$, meaning the gate in not needed in final conversion or $1$, gate is needed in final execution based on the encryption key given. `gate` is the object of Qiskit instruction class which will actually be appended if the circuit is delegated to the server.
+
+The object `bqc_instructions` can further be use to simulate the result be generating Qiskit circuit for this objection
+
+.. code-block:: python
+
+    blind_circ = bqc_instructions.to_circuit(const_type='complete', show_barrier=True) 
+
+This will result in a quantum circuit written in Qiskit, which in our case will look like:
+
+.. image:: _static/blind_circuit_1.png
+   :align: center
+   :width: 40%
+
+
+This circuit when simulate over client-server architecture will result in the output as desired by original circuit:
+
+.. image:: _static/qhe_complete_1.png
+   :align: center
+   :width: 40%
+
+
+However, if we delegate the circuit without proper decryption, we will get output unrelated to the original output. The output can be generated over $1000$ random key values as: 
+
+.. code-block:: python
+
+    blind_format = 'qhe'
+
+    const_type = 'encrypt_only'
+    
+    n_samples = 1000
+
+    bqc_trial = BQC()
+    
+    estimated_key_size = bqc_trial.estimate_keysize(format=blind_format, circ=qc)
+    
+    random_sample_key_space =  generate_binary_samples(n_samples,estimated_key_size)
+    
+    n_clbits = circ.num_clbits
+    
+    output = {output_key: 0 for output_key in [format(i, f'0{n_clbits}b') for i in range(2**n_clbits)]}
+
+    for keys in tqdm(random_sample_key_space):
+    
+        blind_circ, _ = blind_transpiler(circ=circ,blind_format=blind_format, const_type=const_type, keys=keys)
+    
+        results = run_circuit(blind_circ).get_counts()
+    
+        for k in results.keys():
+    
+            output[k] = results[k]
+
+    return output
+
+
+The output over $1000$ random keys will be:
+
+.. image:: _static/qhe_encrypt_only_1.png
+   :align: center
+   :width: 40%
+
+

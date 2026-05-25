@@ -1,0 +1,81 @@
+blind_transpiler.translators package
+====================================
+
+The ``translators`` package defines the gate-level
+translation rules used for blind transpilation.
+
+These translation rules are responsible for converting
+standard Qiskit quantum gates into delegated blind
+operations represented using ``BOP`` objects.
+
+The translator layer is intentionally separated from
+the controller layer to provide:
+
+* modularity
+* reusability
+* extensibility
+* protocol independence
+
+This allows:
+
+* reuse of translation rules across protocols
+* implementation of new protocols with minimal refactoring
+* experimentation with alternative blindness models
+
+Role of Translators
+-------------------
+
+Translators define how individual quantum gates are
+converted into their blind delegated equivalents.
+
+Responsibilities include:
+
+* gate decomposition
+* encryption/decryption logic
+* recursive decryption
+* universal resource-set translation
+* trap gate insertion
+* delegation metadata generation
+
+The output of translators is consumed by controllers
+to generate complete ``BQCInstruction`` objects.
+
+Implemented Translation Libraries
+---------------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   translators/homomorphicTranslator
+   translators/universalFixedRotationTranslator
+   translators/universalOrderedSetTranslator
+   translators/universalRecursiveRotationTranslator
+
+Base Translator
+---------------
+
+Abstract translator interface used by all
+translation libraries.
+
+Defines common functionality for:
+
+* blind gate generation
+* translation interfaces
+* key handling
+* delegation metadata
+
+blind_transpiler.translators.base
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. automodule:: blind_transpiler.translators.base
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Package Contents
+----------------
+
+.. automodule:: blind_transpiler.translators
+   :members:
+   :show-inheritance:
+   :undoc-members:

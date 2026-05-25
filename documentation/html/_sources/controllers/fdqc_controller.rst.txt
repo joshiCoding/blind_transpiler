@@ -1,0 +1,52 @@
+FDQC Controller
+================
+
+The ``FDQC`` controller implements Full Delegated
+Quantum Computation using ordered universal
+resource sets.
+
+Translation Backend
+-------------------
+
+Uses:
+
+* ``UniversalOrderedSetTranslator``
+
+The translator decomposes circuits into ordered
+universal delegated resources.
+
+Supported Gates
+---------------
+
+Supports delegation of:
+
+* ``H``
+* ``S``
+* ``CX``
+* ``CZ``
+* ``CCX``
+
+Handling Parametric Gates
+-------------------------
+
+Arbitrary parametric gates are approximated using:
+
+* Qiskit's ``SolovayKitaev`` transpilation pass
+
+Applications
+------------
+
+Suitable for:
+
+* full-blind quantum delegation
+* universal blind computation
+* ordered-set delegation protocols
+* non-parametric secure execution
+
+Module Documentation
+--------------------
+
+.. automodule:: blind_transpiler.controllers.fdqc
+   :members:
+   :show-inheritance:
+   :undoc-members:
