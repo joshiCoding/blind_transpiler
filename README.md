@@ -1,6 +1,8 @@
 # Blind Transpiler: An open-source library for quantum homomorphic encryption and universal blind quantum computation 
 
 [![License](https://img.shields.io/github/license/Qiskit/qiskit.svg?)](https://opensource.org/licenses/Apache-2.0) 
+[![DOI](https://zenodo.org/badge/1237591308.svg)](https://doi.org/10.5281/zenodo.21437378)
+
 
 Blind quantum computation (BQC) allows a limited-capability client to perform complex quantum computation on a remote server without revealing input, output, or computation. This primitive solves a problem of cryptography called '*Secure Delegated Computation*'.
 
