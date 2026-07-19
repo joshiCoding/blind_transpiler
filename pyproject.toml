@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "blind_transpiler"
-version = "0.0.1"
+version = "1.0.0"
 
 
 description = "A Qiskit-based library for transpiling quantum circuits into blind counterparts for applications in quantum homomorphic encryption and universal blind quantum computation."
@@ -30,7 +30,7 @@ keywords = [
 ]
 
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
 
     "Intended Audience :: Science/Research",
     "Intended Audience :: Developers",
