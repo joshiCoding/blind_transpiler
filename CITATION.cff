@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: BlindTranspiler
+authors:
+  - family-names: Joshi
+    given-names: Mohit
+
+version: 1.0.0
+
+doi:
+
+date-released: 2026-07-19
+
+license: Apache-2.0
+
+message: "If you use this software, please cite it."
+
+repository-code: https://github.com/joshiCoding/blind_transpiler/
